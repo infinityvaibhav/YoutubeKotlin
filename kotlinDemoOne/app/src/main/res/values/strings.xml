@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">kotlinDemoOne</string>
+    <string name="error_message">Failed to execute request</string>
+    <string name="iron_man">Iron Man</string>
+    <string name="batman">Batman</string>
+    <string name="course_detail">Course Detail</string>
+    <string name="course_detail_json_API">https://api.letsbuildthatapp.com/youtube/course_detail?id=</string>
+</resources>
