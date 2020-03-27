@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CourseDetailActivity">
+    tools:context=".Activity.CourseDetailActivity">
 
     <ImageView
         android:id="@+id/row_imageView"

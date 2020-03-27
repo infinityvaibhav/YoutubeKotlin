@@ -1,4 +1,4 @@
-package com.example.kotlindemoone
+package com.example.kotlindemoone.Adapters
 
 import android.content.Intent
 import android.util.Log
@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlindemoone.Bean.HomeFeed
+import com.example.kotlindemoone.Bean.Videos
+import com.example.kotlindemoone.Activity.CourseDetailActivity
+import com.example.kotlindemoone.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
-import okhttp3.Request
 
 
 class RecyclerViewAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<MViewHolder>() {

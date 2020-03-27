@@ -1,11 +1,11 @@
 package com.example.kotlindemoone
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlindemoone.Adapters.RecyclerViewAdapter
+import com.example.kotlindemoone.Bean.HomeFeed
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -39,7 +39,10 @@ class MainActivity : AppCompatActivity() {
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)
 
                 runOnUiThread {
-                    recyclerview_main.adapter = RecyclerViewAdapter(homeFeed)
+                    recyclerview_main.adapter =
+                        RecyclerViewAdapter(
+                            homeFeed
+                        )
                 }
             }
 

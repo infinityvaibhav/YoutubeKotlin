@@ -1,9 +1,13 @@
-package com.example.kotlindemoone
+package com.example.kotlindemoone.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlindemoone.Adapters.CourseDetainAdapter
+import com.example.kotlindemoone.Adapters.MViewHolder
+import com.example.kotlindemoone.Bean.CourseLesson
+import com.example.kotlindemoone.R
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -40,7 +44,10 @@ class CourseDetailActivity : AppCompatActivity() {
                 val courseLesson = gson.fromJson(body, Array<CourseLesson>::class.java)
 
                 runOnUiThread {
-                    recyclerview_main.adapter = CourseDetainAdapter(courseLesson)
+                    recyclerview_main.adapter =
+                        CourseDetainAdapter(
+                            courseLesson
+                        )
                 }
             }
 
