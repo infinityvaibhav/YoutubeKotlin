@@ -2,9 +2,8 @@ package com.example.kotlindemoone
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlindemoone.Adapters.RecyclerViewAdapter
+import com.example.kotlindemoone.adapters.RecyclerViewAdapter
 import com.example.kotlindemoone.Bean.HomeFeed
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,25 +17,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        recyclerview_main.setBackgroundColor(Color.RED)
         recyclerview_main.layoutManager = LinearLayoutManager(this)
-
-
         fetchJSON()
     }
 
     private fun fetchJSON() {
-        val url = "https://api.letsbuildthatapp.com/youtube/home_feed"
+        val url = getString(R.string.home_feed_json_API)
 
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
         client.newCall(request).enqueue(object: Callback {
 
             override fun onResponse(call: Call, response: Response) {
-                val body = response?.body?.string()
-                Log.i("response",body)
-                val gson = GsonBuilder().create()
-                val homeFeed = gson.fromJson(body, HomeFeed::class.java)
+                val body = response.body?.string()
+                val gsonObject = GsonBuilder().create()
+                val homeFeed = gsonObject.fromJson(body, HomeFeed::class.java)
 
                 runOnUiThread {
                     recyclerview_main.adapter =
@@ -52,8 +47,3 @@ class MainActivity : AppCompatActivity() {
         })
     }
 }
-
-
-//class HomeFeed(val videos: List<Videos>)
-//
-//class Videos(id: Int, name: String)

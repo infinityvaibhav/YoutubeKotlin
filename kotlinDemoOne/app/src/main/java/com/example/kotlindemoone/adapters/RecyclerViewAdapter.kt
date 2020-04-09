@@ -1,4 +1,4 @@
-package com.example.kotlindemoone.Adapters
+package com.example.kotlindemoone.adapters
 
 import android.content.Intent
 import android.util.Log
@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlindemoone.Bean.HomeFeed
 import com.example.kotlindemoone.Bean.Videos
-import com.example.kotlindemoone.Activity.CourseDetailActivity
+import com.example.kotlindemoone.activity.CourseDetailActivity
 import com.example.kotlindemoone.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
 
 
-class RecyclerViewAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<MViewHolder>() {
+class RecyclerViewAdapter(private val homeFeed: HomeFeed): RecyclerView.Adapter<MViewHolder>() {
 
     //number of item
     override fun getItemCount(): Int {
@@ -29,14 +29,15 @@ class RecyclerViewAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<MViewHol
 
     override fun onBindViewHolder(holder: MViewHolder, position: Int) {
         val video = homeFeed.videos[position]
-        val videoThumbnailImageView = holder?.view?.videoThumnail
-        val videoChannelImageView = holder?.view?.channelIcon
-        holder?.view?.video_title?.text = video.name
-        holder?.view?.video_description?.text = video.channel.name + " + " + "20k Views\n4 days ago"
+        val videoThumbnailImageView = holder.view.videoThumnail
+        val videoChannelImageView = holder.view.channelIcon
+        val descriptionText = video.channel.name + " + 20k Views\n4 days ago"
+        holder.view.video_title?.text = video.name
+        holder.view.video_description?.text = descriptionText
         Picasso.with(holder.view.context).load(video.imageUrl).into(videoThumbnailImageView)
         Picasso.with(holder.view.context).load(video.channel.profileImageUrl).into(videoChannelImageView)
 
-        holder?.video = video
+        holder.video = video
     }
 
 

@@ -1,11 +1,11 @@
-package com.example.kotlindemoone.Activity
+package com.example.kotlindemoone.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlindemoone.Adapters.CourseDetainAdapter
-import com.example.kotlindemoone.Adapters.MViewHolder
+import com.example.kotlindemoone.adapters.CourseDetainAdapter
+import com.example.kotlindemoone.adapters.MViewHolder
 import com.example.kotlindemoone.Bean.CourseLesson
 import com.example.kotlindemoone.R
 import com.google.gson.GsonBuilder
@@ -37,8 +37,8 @@ class CourseDetailActivity : AppCompatActivity() {
                 Log.d("failure", "failed calling course detail")
             }
 
-            override fun onResponse(call    : Call, response: Response) {
-                val body = response?.body?.string()
+            override fun onResponse(call: Call, response: Response) {
+                val body = response.body?.string()
 
                 val gson = GsonBuilder().create()
                 val courseLesson = gson.fromJson(body, Array<CourseLesson>::class.java)

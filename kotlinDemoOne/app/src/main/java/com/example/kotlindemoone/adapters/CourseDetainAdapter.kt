@@ -1,4 +1,4 @@
-package com.example.kotlindemoone.Adapters
+package com.example.kotlindemoone.adapters
 
 import android.content.Intent
 import android.util.Log
@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlindemoone.Activity.CourseLessonActivity
+import com.example.kotlindemoone.activity.CourseLessonActivity
 import com.example.kotlindemoone.Bean.CourseLesson
 import com.example.kotlindemoone.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.course_detail_row.view.*
 
-class CourseDetainAdapter(val courseLesson: Array<CourseLesson>): RecyclerView.Adapter<ViewHolder>() {
+class CourseDetainAdapter(private val courseLesson: Array<CourseLesson>): RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -28,12 +28,12 @@ class CourseDetainAdapter(val courseLesson: Array<CourseLesson>): RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val courseLesson = courseLesson[position]
-        Log.d("holder", holder?.customView?.duration.text as String)
-        holder?.customView?.courseTitle?.text = courseLesson.name
-        holder?.customView?.duration?.text = courseLesson.duration
-        holder?.customView?.number?.text = courseLesson.number.toString()
-        Picasso.with(holder.customView.context).load(courseLesson.imageUrl).into(holder?.customView?.row_imageView)
-        holder?.courseLesson = courseLesson
+        Log.d("holder", holder.customView.duration.text as String)
+        holder.customView.courseTitle?.text = courseLesson.name
+        holder.customView.duration?.text = courseLesson.duration
+        holder.customView.number?.text = courseLesson.number.toString()
+        Picasso.with(holder.customView.context).load(courseLesson.imageUrl).into(holder.customView.row_imageView)
+        holder.courseLesson = courseLesson
     }
 }
 
